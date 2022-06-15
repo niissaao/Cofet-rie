@@ -1,0 +1,40 @@
+.p-card {
+  font-family: "Comfortaa", sans-serif !important;
+}
+
+.homeImage img {
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: -1;
+}
+
+.timeline {
+  margin-top: 5vh;
+}
+
+.p-card-content {
+  display: flex;
+  align-items: center;
+}
+
+.custom-marker {
+  display: flex;
+  width: 2rem;
+  height: 2rem;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.p-card-content img {
+  width: 20%;
+}
+
+.p-card-content p {
+  margin-left: 20px;
+  margin-right: 20px;
+}

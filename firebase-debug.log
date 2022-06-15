@@ -1,0 +1,36 @@
+[debug] [2022-05-05T11:37:03.151Z] ----------------------------------------------------------------------
+[debug] [2022-05-05T11:37:03.153Z] Command:       /home/sonia/.nvm/versions/node/v16.15.0/bin/node /home/sonia/.nvm/versions/node/v16.15.0/bin/firebase deploy --only functions
+[debug] [2022-05-05T11:37:03.153Z] CLI Version:   10.8.0
+[debug] [2022-05-05T11:37:03.153Z] Platform:      linux
+[debug] [2022-05-05T11:37:03.153Z] Node Version:  v16.15.0
+[debug] [2022-05-05T11:37:03.154Z] Time:          Thu May 05 2022 14:37:03 GMT+0300 (Eastern European Summer Time)
+[debug] [2022-05-05T11:37:03.154Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2022-05-05T11:37:03.203Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2022-05-05T11:37:03.204Z] > authorizing via signed-in user (soniagabrielabanea99@gmail.com)
+[debug] [2022-05-05T11:37:03.204Z] [iam] checking project cofetarie-7590b for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]
+[debug] [2022-05-05T11:37:03.206Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/cofetarie-7590b:testIamPermissions [none]
+[debug] [2022-05-05T11:37:03.206Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/cofetarie-7590b:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
+[debug] [2022-05-05T11:37:04.166Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/cofetarie-7590b:testIamPermissions 200
+[debug] [2022-05-05T11:37:04.166Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/cofetarie-7590b:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
+[debug] [2022-05-05T11:37:04.167Z] >>> [apiv2][query] POST https://iam.googleapis.com/v1/projects/cofetarie-7590b/serviceAccounts/cofetarie-7590b@appspot.gserviceaccount.com:testIamPermissions [none]
+[debug] [2022-05-05T11:37:04.167Z] >>> [apiv2][body] POST https://iam.googleapis.com/v1/projects/cofetarie-7590b/serviceAccounts/cofetarie-7590b@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
+[debug] [2022-05-05T11:37:04.970Z] <<< [apiv2][status] POST https://iam.googleapis.com/v1/projects/cofetarie-7590b/serviceAccounts/cofetarie-7590b@appspot.gserviceaccount.com:testIamPermissions 200
+[debug] [2022-05-05T11:37:04.971Z] <<< [apiv2][body] POST https://iam.googleapis.com/v1/projects/cofetarie-7590b/serviceAccounts/cofetarie-7590b@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
+[info] 
+[info] === Deploying to 'cofetarie-7590b'...
+[info] 
+[info] i  deploying functions 
+[debug] [2022-05-05T11:37:05.088Z] TypeError [ERR_INVALID_ARG_TYPE]: The "path" argument must be of type string. Received undefined
+    at new NodeError (node:internal/errors:372:5)
+    at validateString (node:internal/validators:120:11)
+    at Object.join (node:path:1172:7)
+    at Config.path (/home/sonia/.nvm/versions/node/v16.15.0/lib/node_modules/firebase-tools/lib/config.js:122:45)
+    at getChildEnvironment (/home/sonia/.nvm/versions/node/v16.15.0/lib/node_modules/firebase-tools/lib/deploy/lifecycleHooks.js:50:49)
+    at runTargetCommands (/home/sonia/.nvm/versions/node/v16.15.0/lib/node_modules/firebase-tools/lib/deploy/lifecycleHooks.js:71:14)
+    at /home/sonia/.nvm/versions/node/v16.15.0/lib/node_modules/firebase-tools/lib/deploy/lifecycleHooks.js:122:24
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async chain (/home/sonia/.nvm/versions/node/v16.15.0/lib/node_modules/firebase-tools/lib/deploy/index.js:32:9)
+    at async deploy (/home/sonia/.nvm/versions/node/v16.15.0/lib/node_modules/firebase-tools/lib/deploy/index.js:66:5)
+[error] 
+[error] Error: An unexpected error has occurred.

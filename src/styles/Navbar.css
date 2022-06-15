@@ -1,0 +1,36 @@
+.p-menubar {
+  font-family: "Comfortaa", sans-serif !important;
+  font-size: x-large !important;
+}
+
+.p-menuitem .p-submenu-list {
+  font-size: medium;
+  text-align: left;
+  width: max-content;
+}
+
+.p-autocomplete {
+  width: 40vw;
+}
+
+.p-autocomplete input {
+  font-family: "Comfortaa", sans-serif;
+}
+
+.p-autocomplete-panel {
+  font-family: "Comfortaa", sans-serif !important;
+}
+
+.p-menu-list {
+  font-family: "Comfortaa", sans-serif
+}
+
+.p-menubar-end {
+  display: flex;
+  align-items: stretch;
+}
+
+.p-avatar {
+  margin-left: 10px;
+}
+

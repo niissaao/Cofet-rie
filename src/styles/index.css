@@ -1,0 +1,15 @@
+body {
+  margin: 0;
+  font-family: "Comfortaa", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: "Comfortaa", sans-serif;
+}
+
+@font-face {
+  font-family: "Comfortaa";
+  src: local("Comfortaa"), url("../resources/fonts/comfortaa/Comfortaa-Regular.ttf");
+}

@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  font-family: "Comfortaa", sans-serif;
 }
 
 .App-logo {
@@ -35,4 +36,16 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.image-container {
+  height: 100vh;
+}
+
+.homeImage img {
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: -1;
 }
