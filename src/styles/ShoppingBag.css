@@ -1,0 +1,62 @@
+.shopping-bag-container {
+  font-family: "Comfortaa", sans-serif !important;
+  margin: 5vh 2vw;
+}
+
+.shopping-bag-container .product-name {
+  text-decoration: none;
+  color: #2a2c2f;
+}
+
+.quantity {
+  font-size: 1.5rem;
+  margin: 3rem 1rem 3rem 3rem;
+}
+
+.shopping-bag-container img {
+  width: 8rem;
+}
+
+.total-products {
+  font-size: 1.5rem;
+}
+
+.p-orderlist-list {
+  max-height: 70vh;
+}
+
+.product-list-item {
+  height: 15vh;
+}
+
+.product-list-action {
+  margin: 1rem;
+}
+
+.footer-shopping-bag {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+button {
+  font-family: "Comfortaa", sans-serif!important;
+}
+
+.p-confirm-dialog .p-dialog-content {
+  justify-content: space-around;
+}
+
+.shopping-bag-container.p-dataview {
+  font-family: "Comfortaa", sans-serif;
+  /*border: 4px double #414779;*/
+  border-radius: 8px;
+}
+
+.p-dataview-footer {
+  background-color: rgba(255, 255, 255, 0.95);
+  /*border-top: 4px double #414779 !important;*/
+  border-bottom-left-radius: 8px !important;
+  border-bottom-right-radius: 8px !important;
+}

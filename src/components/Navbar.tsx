@@ -4,10 +4,11 @@ import {database} from "../Firebase";
 import {useEffect, useRef, useState} from "react";
 import {collection, onSnapshot, query} from "firebase/firestore"
 import {AutoComplete} from "primereact/autocomplete";
-import {ProductModel} from "../pages/produse/AllProducts";
+import {ProductModel} from "../pages/Products";
 import {useNavigate} from 'react-router-dom';
 import {Avatar} from "primereact/avatar";
 import {Menu} from "primereact/menu";
+import {sortByProdId} from "../pages/ShoppingBag";
 
 type NavbarItemModel = {
   id: number;
@@ -49,9 +50,9 @@ export const Navbar = () => {
   }
 
   const navigateFn = (event: any) => {
-    navigate(event.value.category === "Biscuiți, fursecuri, macarons" ? "/biscuiti-fursecuri-macarons"
-      : event.value.category === "Brioșe, mini prăjituri, eclere" ? "/briose-mini-prajituri-eclere"
-        : "/torturi-tarte-prajituri")
+    const path = `/produs/${event.value.productId}`
+    navigate(path)
+    window.location.reload();
   }
 
   useEffect(() => {
@@ -114,14 +115,14 @@ export const Navbar = () => {
             name: doc.get(fieldPath).name,
             price: doc.get(fieldPath).price,
             unit: doc.get(fieldPath).unit,
-            id: doc.get(fieldPath).id,
+            productId: doc.get(fieldPath).id,
             description: doc.get(fieldPath).description ? doc.get(fieldPath).description : undefined,
             image: doc.get(fieldPath).image ? doc.get(fieldPath).image : undefined,
             quantity: doc.get(fieldPath).quantity ? doc.get(fieldPath).quantity : undefined,
             rating: doc.get(fieldPath).rating
           })
         })
-        allProducts.sort(sortById);
+        allProducts.sort(sortByProdId);
         setProducts(allProducts)
       })
     })

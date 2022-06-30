@@ -1,0 +1,14 @@
+.confirm-card {
+  margin: 5vh auto;
+  width: 60vw;
+  background-color: rgba(255, 255, 255, 0.95);
+}
+
+.confirm-card .p-card-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.confirm-card .p-button {
+  margin-top: 10px;
+}

@@ -1,5 +1,9 @@
 body {
   margin: 0;
+  background-image: url("../resources/img/home.jpg");
+  background-size: cover;
+  background-position: top center;
+  background-repeat: no-repeat;
   font-family: "Comfortaa", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -12,4 +16,9 @@ code {
 @font-face {
   font-family: "Comfortaa";
   src: local("Comfortaa"), url("../resources/fonts/comfortaa/Comfortaa-Regular.ttf");
+}
+
+button {
+  background-color: #ff989b!important;
+  border: #ff989b!important;
 }

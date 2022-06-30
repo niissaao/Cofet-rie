@@ -38,10 +38,6 @@
   }
 }
 
-.image-container {
-  height: 100vh;
-}
-
 .homeImage img {
   width: 100%;
   position: absolute;

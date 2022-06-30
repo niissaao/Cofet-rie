@@ -6,47 +6,60 @@ import "primereact/resources/themes/lara-light-indigo/theme.css";
 import "primereact/resources/primereact.min.css";
 import "primeicons/primeicons.css";
 import {Navbar} from "./components/Navbar";
-import {Cakes} from "./pages/produse/Cakes";
-import {Cookies} from "./pages/produse/Cookies";
-import {Cupcakes} from "./pages/produse/Cupcakes";
-import {AllProducts} from "./pages/produse/AllProducts";
-import homeImg from "./resources/img/home.jpg";
-import {Image} from "primereact/image";
+import {Products} from "./pages/Products";
 import {MyAccount} from "./pages/MyAccount";
 import {About} from "./pages/About";
+import {Signup} from "./pages/SignUp";
+import {Login} from "./pages/Login";
+import {ShoppingBag} from "./pages/ShoppingBag";
+import {Contact} from "./pages/Contact";
+import {Product} from "./pages/Product";
+import {ConfirmCommand} from "./pages/ConfirmCommand";
+
+// sonia.banea@s.unibuc.ro
 
 function App() {
   return (<div className="App">
-      <BrowserRouter>
-        <Navbar/>
-      </BrowserRouter>
-      <div className="image-container">
-        <Image src={homeImg} alt='home image' className='homeImage'/>
-        <BrowserRouter>
-          <Routes>
-            <Route path="/torturi-tarte-prajituri" element={<Cakes/>}/>
-          </Routes>
-          <Routes>
-            <Route path="/biscuiti-fursecuri-macarons" element={<Cookies/>}/>
-          </Routes>
-          <Routes>
-            <Route path="/briose-mini-prajituri-eclere" element={<Cupcakes/>}/>
-          </Routes>
-          <Routes>
-            <Route path="/toate-produsele" element={<AllProducts/>}/>
-          </Routes>
-          <Routes>
-            <Route path="/contul-meu" element={<MyAccount/>}/>
-          </Routes>
-          <Routes>
-            <Route path="/despre-noi" element={<About/>}/>
-          </Routes>
-          <Routes>
-            <Route path="/" element={<Home/>}/>
-          </Routes>
-        </BrowserRouter>
-      </div>
-    </div>);
+    <BrowserRouter>
+      <Navbar/>
+    </BrowserRouter>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/produse" element={<Products/>}/>
+      </Routes>
+      <Routes>
+        <Route path="/contul-meu" element={<MyAccount/>}/>
+      </Routes>
+      <Routes>
+        <Route path="/despre-noi" element={<About/>}/>
+      </Routes>
+      <Routes>
+        <Route path="/contact" element={<Contact/>}/>
+      </Routes>
+      <Routes>
+        <Route path="/cosul-meu" element={<ShoppingBag/>}/>
+      </Routes>
+      <Routes>
+        <Route path="/inregistrare" element={<Signup/>}/>
+      </Routes>
+      <Routes>
+        <Route path="/autentificare" element={<Login/>}/>
+      </Routes>
+      <Routes>
+        <Route path="/produs">
+          <Route path=":productId" element={<Product/>}/>
+        </Route>
+      </Routes>
+      <Routes>
+        <Route path="/comanda-finalizata">
+          <Route path=":orderId" element={<ConfirmCommand/>}/>
+        </Route>
+      </Routes>
+      <Routes>
+        <Route path="/" element={<Home/>}/>
+      </Routes>
+    </BrowserRouter>
+  </div>);
 }
 
 export default App;

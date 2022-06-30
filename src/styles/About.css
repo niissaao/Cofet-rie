@@ -1,5 +1,6 @@
 .p-card {
   font-family: "Comfortaa", sans-serif !important;
+  background-color: rgba(255, 255, 255, 0.95);
 }
 
 .homeImage img {
@@ -12,11 +13,13 @@
 
 .timeline {
   margin-top: 5vh;
+  margin-bottom: 5vh;
 }
 
 .p-card-content {
   display: flex;
   align-items: center;
+  flex-direction: row;
 }
 
 .custom-marker {

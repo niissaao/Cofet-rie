@@ -1,61 +1,66 @@
-import {useEffect, useState} from "react";
-import {collection, onSnapshot, query} from "firebase/firestore";
-import {database} from "../Firebase";
-import { doc, setDoc } from "firebase/firestore";
-
-type loginModel = {
-  email: string;
-  password: string;
-  id: number;
-}
+import React, {useState} from "react";
+import {auth} from "../Firebase";
+import {InputText} from "primereact/inputtext";
+import {Password} from "primereact/password";
+import {Button} from "primereact/button";
+import "../styles/Login.css"
+import {useNavigate} from "react-router-dom";
+import {onAuthStateChanged, signInWithEmailAndPassword} from "firebase/auth";
 
 export const Login = () => {
+  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('');
 
-  const [accounts, setAccounts] = useState<Array<loginModel>>([]);
-  const allAccounts: Array<loginModel> = [];
+  const navigate = useNavigate();
 
-  useEffect(() => {
-    const accountColRef = query(collection(database, '/accounts'))
-    onSnapshot(accountColRef, (snapshot) => {
-      snapshot.docs.forEach(doc => {
-        Object.keys(doc.data()).forEach(fieldPath => {
-          allAccounts.push({
-            email: doc.get(fieldPath).email,
-            password: doc.get(fieldPath).password,
-            id: doc.get(fieldPath).id,
-          })
-        })
-        // console.log(doc.data())
-        setAccounts(allAccounts)
-      })
-    })
-  }, [])
-
-  const email = "admin@a.a";
-  const password = "1234";
-
-  for(let i = 0; i < accounts.length; i++) {
-    if(email === accounts[i].email) {
-      if(password === accounts[i].password)
-        console.log("aaaaaa")
+  const onLogin = async (e: any) => {
+    e.preventDefault();
+    try {
+      await signInWithEmailAndPassword(auth, email, password)
+    }
+    catch(error) {
+      console.log(`There was an error: ${error}`)
     }
   }
 
-  // console.log(accounts)
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      navigate("/contul-meu");
+    }
+  });
 
-  const addUsr = async () => {
-    await setDoc(doc(database, "/accounts", "VgIwKzqq7RExK91S8P36"), {
-      u3: {
-        email: "admin@b.b",
-        password: "4321",
-        id: 3
-      }
-    }, { merge: true }).then();
-  }
-
-  addUsr();
-
-  return <>
-
-  </>
+  return (
+    <div className="login-container">
+      <form className="login-form" autoComplete="off">
+        <h1>Autentificare</h1>
+        <div className="login-inputs">
+          <label htmlFor="email">Adresă de email:</label>
+          <InputText
+            name="username"
+            id="username"
+            aria-describedby="username-help"
+            className="login-input"
+            placeholder="Adresa ta de email"
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </div>
+        <div className="login-inputs">
+          <label htmlFor="password">Parolă:</label>
+          <Password
+            name="password"
+            id="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            toggleMask
+            feedback={false}
+            placeholder="Parola"
+            className="login-input"/>
+        </div>
+        <div className="login-buttons">
+          <Button type="submit" onClick={onLogin}>Autentifică-te</Button>
+          <Button type="button" onClick={() => navigate("/inregistrare")}>Creează-ți cont!</Button>
+        </div>
+      </form>
+    </div>
+  )
 }

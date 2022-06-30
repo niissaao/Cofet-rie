@@ -1,6 +1,8 @@
 .p-menubar {
   font-family: "Comfortaa", sans-serif !important;
-  font-size: x-large !important;
+  font-size: large !important;
+  padding-left: 50px;
+  padding-right: 50px;
 }
 
 .p-menuitem .p-submenu-list {
@@ -10,7 +12,7 @@
 }
 
 .p-autocomplete {
-  width: 40vw;
+  width: 25vw;
 }
 
 .p-autocomplete input {
