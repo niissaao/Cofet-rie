@@ -54,9 +54,9 @@ export const Products = () => {
   const categs = ["Biscuiți, fursecuri, macarons", "Brioșe, mini prăjituri, eclere", "Torturi, tarte, prăjituri"];
   const units = ["pe kg", "la bucată", "pe cutie"];
   const [stockFilter, setStockFilter] = useState<boolean>(false);
-  const [categories, setCategories] = useState(categs);
+  const [categories, setCategories] = useState<Array<string>>([]);
   const [priceRange, setPriceRange] = useState<Array<number>>([0, maxPrice]);
-  const [filteredUnits, setFilteredUnits] = useState<Array<string>>(units);
+  const [filteredUnits, setFilteredUnits] = useState<Array<string>>([]);
 
   const [maxRange, setMaxRange] = useState<number>(0);
 
@@ -153,17 +153,38 @@ export const Products = () => {
 
   const onFilterChange = (e: any) => {
     e.preventDefault();
-    const funcFilteredProducts: Array<ProductModel> = [];
+    let funcFilteredProducts: Array<ProductModel> = [];
     products.forEach(product => funcFilteredProducts.push(product));
+    let areCategoriesCleared = true;
+    let areUnitsCleared = true;
 
     for (let i = 0; i < funcFilteredProducts.length; i++) {
-      if (stockFilter && !funcFilteredProducts[i].availability) {
+      if(categories.length === 0) {
+        areCategoriesCleared = true;
+        break;
+      }
+      if (!categories.includes(funcFilteredProducts[i].category!)) {
+        areCategoriesCleared = false;
         funcFilteredProducts.splice(funcFilteredProducts.indexOf(funcFilteredProducts[i]), 1);
         i--;
       }
     }
     for (let i = 0; i < funcFilteredProducts.length; i++) {
-      if (!categories.includes(funcFilteredProducts[i].category!)) {
+      if(filteredUnits.length === 0) {
+        areUnitsCleared = true;
+        break;
+      }
+      if (!filteredUnits.includes(`pe ${funcFilteredProducts[i].unit}`) && !filteredUnits.includes(`la ${funcFilteredProducts[i].unit}`)) {
+        areUnitsCleared = false;
+        funcFilteredProducts.splice(funcFilteredProducts.indexOf(funcFilteredProducts[i]), 1);
+        i--;
+      }
+    }
+    // if(areCategoriesCleared && areUnitsCleared) {
+    //   funcFilteredProducts = products;
+    // }
+    for (let i = 0; i < funcFilteredProducts.length; i++) {
+      if (stockFilter && !funcFilteredProducts[i].availability) {
         funcFilteredProducts.splice(funcFilteredProducts.indexOf(funcFilteredProducts[i]), 1);
         i--;
       }
@@ -174,21 +195,16 @@ export const Products = () => {
         i--;
       }
     }
-    for (let i = 0; i < funcFilteredProducts.length; i++) {
-      if (!filteredUnits.includes(`pe ${funcFilteredProducts[i].unit}`) && !filteredUnits.includes(`la ${funcFilteredProducts[i].unit}`)) {
-        funcFilteredProducts.splice(funcFilteredProducts.indexOf(funcFilteredProducts[i]), 1);
-        i--;
-      }
-    }
-
+    // console.log(funcFilteredProducts)
     setFilteredProducts(funcFilteredProducts)
   }
 
-  const resetFields = () => {
+  const resetFields = (e: any) => {
     setStockFilter(false);
-    setCategories(categs);
+    setCategories([]);
     setPriceRange([0, maxRange]);
-    setFilteredUnits(units);
+    setFilteredUnits([]);
+    setFilteredProducts(products);
   }
 
   useEffect(() => {

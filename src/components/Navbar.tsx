@@ -7,7 +7,6 @@ import {AutoComplete} from "primereact/autocomplete";
 import {ProductModel} from "../pages/Products";
 import {useNavigate} from 'react-router-dom';
 import {Avatar} from "primereact/avatar";
-import {Menu} from "primereact/menu";
 import {sortByProdId} from "../pages/ShoppingBag";
 
 type NavbarItemModel = {
@@ -30,9 +29,6 @@ export const Navbar = () => {
   const [navbarItem, setNavbarItem] = useState<Array<NavbarItemModel>>([]);
   const navbarItems: Array<NavbarItemModel> = [];
 
-  const [userMenuItem, setUserMenuItem] = useState<Array<NavbarItemModel>>([]);
-  const userMenu: Array<NavbarItemModel> = [];
-
   const [products, setProducts] = useState<Array<ProductModel>>([]);
   const allProducts: Array<ProductModel> = [];
 
@@ -40,8 +36,6 @@ export const Navbar = () => {
   const [filteredOptions, setFilteredOptions] = useState(products)
 
   const navigate = useNavigate();
-
-  const menu = useRef<any>(null);
 
   const search = (event: any) => {
     let query = event.query;
@@ -57,7 +51,6 @@ export const Navbar = () => {
 
   useEffect(() => {
     const navColRef = query(collection(database, '/navbar'))
-    const userMenuRef = query(collection(database, '/accountMenu'))
     const prodColRef = query(collection(database, '/products'))
 
     onSnapshot(navColRef, (snapshot) => {
@@ -80,29 +73,6 @@ export const Navbar = () => {
         })
         navbarItems.sort(sortById);
         setNavbarItem(navbarItems)
-      })
-    })
-
-    onSnapshot(userMenuRef, (snapshot) => {
-      snapshot.docs.map(doc => {
-        Object.keys(doc.data()).map(fieldPath => {
-          const arrayItems: Array<NavbarItemModel> = [];
-          if (doc.get(fieldPath).items) {
-            Object.keys(doc.get(fieldPath).items).forEach(item => {
-              arrayItems.push(doc.get(fieldPath).items[item]);
-            })
-          }
-          arrayItems.sort(sortById);
-          userMenu.push({
-            id: doc.get(fieldPath).id,
-            label: doc.get(fieldPath).label ? doc.get(fieldPath).label : undefined,
-            icon: doc.get(fieldPath).icon ? doc.get(fieldPath).icon : undefined,
-            url: doc.get(fieldPath).url ? doc.get(fieldPath).url : undefined,
-            items: doc.get(fieldPath).items ? arrayItems : undefined
-          })
-        })
-        userMenu.sort(sortById);
-        setUserMenuItem(userMenu)
       })
     })
 
@@ -140,11 +110,23 @@ export const Navbar = () => {
       onChange={(e) => setSelectedValue(e.value)}
       onSelect={navigateFn}
     />
-    <Menu model={userMenuItem} popup ref={menu} id="popup_menu"/>
     <Avatar
       icon="pi pi-user"
       size={"large"}
-      onClick={(event) => menu?.current?.toggle(event)}
+      onClick={(event) => {
+        navigate("/contul-meu");
+        window.location.reload();
+      }}
+      aria-controls="popup_menu"
+      aria-haspopup
+    />
+    <Avatar
+      icon="pi pi-shopping-bag"
+      size={"large"}
+      onClick={() => {
+        navigate("/cosul-meu");
+        window.location.reload();
+      }}
       aria-controls="popup_menu"
       aria-haspopup
     />

@@ -140,6 +140,10 @@ export const ShoppingBag = () => {
             <p>Cantitate: </p>
             <p>{data.number}</p>
           </div>
+          <div className="quantity">
+            <p>Total: </p>
+            <p>{data.price * (data.number ? data.number : 1)} RON</p>
+          </div>
         </div>
       </div>
     );
@@ -212,6 +216,7 @@ export const ShoppingBag = () => {
       className="shopping-bag-container"
       header="Sumar comandă"
       footer={footer}
+      emptyMessage="Coșul dumneavoastră este gol."
     />
   </>
 }

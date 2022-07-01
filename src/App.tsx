@@ -16,8 +16,6 @@ import {Contact} from "./pages/Contact";
 import {Product} from "./pages/Product";
 import {ConfirmCommand} from "./pages/ConfirmCommand";
 
-// sonia.banea@s.unibuc.ro
-
 function App() {
   return (<div className="App">
     <BrowserRouter>

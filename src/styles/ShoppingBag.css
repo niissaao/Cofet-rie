@@ -8,6 +8,15 @@
   color: #2a2c2f;
 }
 
+.shopping-bag-container .p-dataview-header {
+  border-bottom: none!important;
+}
+
+.p-dataview-emptymessage {
+  font-size: x-large;
+  border: none!important;
+}
+
 .quantity {
   font-size: 1.5rem;
   margin: 3rem 1rem 3rem 3rem;

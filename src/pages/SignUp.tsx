@@ -39,7 +39,7 @@ export const Signup = () => {
       await createUserWithEmailAndPassword(auth, email, password).then((user ) => {
         userId = user.user.uid;
         addUserDetails();
-        navigate("/contul-meu");
+        navigate("/");
       })
     }
     catch(error) {
@@ -60,7 +60,7 @@ export const Signup = () => {
 
   return (
     <div className="sign-up-container">
-      <form className="sign-up-form" autoComplete="off">
+      <form className="sign-up-form">
         <h1>Înregistrare</h1>
         <div className="sign-up-inputs">
           <label htmlFor="username">Adresă de email:</label>
@@ -105,7 +105,7 @@ export const Signup = () => {
             id="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            footer={footer}
+            // footer={footer}
             toggleMask
             placeholder="Alege parola"
             className="sign-up-input"/>
